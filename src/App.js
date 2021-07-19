@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import SearchBar from './components/Search bar';
+import Button from './components/Button';
+import Gifs from './components/gifs/gifs';
+import gif from './Data/GIFdata';
 import './App.css';
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <form>
+        <label>Search GIFs</label>
+        <div>
+        <SearchBar></SearchBar>
+        <Button onClick={() => alert("You searching")}/>
+        <div className="gifss">         
+          {gif.map(({id, title, webp, rating}) =>(
+            rating === 'g' && <Gifs url={webp}  alt={title} key={id} rating={rating}/>
+          ))}
+
+        </div>
+        </div>
+        </form>
     </div>
   );
 }
